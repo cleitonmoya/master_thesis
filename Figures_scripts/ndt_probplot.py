@@ -87,9 +87,15 @@ for i,f in enumerate(files):
     ax[2].set_xlabel('')
     ax[2].set_ylabel('')
     ax[2].set_xticks([-2,-1,0,1,2])
+for i in range(3):
+    subfigs[i].get_axes()[0].set_xlabel('sample (t)')
 
-subfigs[0].get_axes()[0].set_xlabel('sample (t)')
 subfigs[0].get_axes()[1].set_title('Segment 1')
 _ = subfigs[0].get_axes()[1].set_xlabel('theoretical quantiles')
 subfigs[0].get_axes()[2].set_title('Segment 2')
 _ = subfigs[0].get_axes()[2].set_xlabel('theoretical quantiles')
+
+subfigs[0].get_axes()[0].set_ylabel('Mbits/s')
+subfigs[1].get_axes()[0].set_ylabel('Mbits/s')
+subfigs[2].get_axes()[0].set_ylabel('ms')
+subfigs[3].get_axes()[0].set_ylabel('Mbits/s')

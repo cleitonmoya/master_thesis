@@ -23,9 +23,11 @@ for i,s in enumerate(sites):
     ax[i//3, i%3].plot(y, linewidth=0.5)
     ax[i//3, i%3].set_yticks(np.arange(50,650,100))
     ax[i//3, i%3].set_ylim(50,550)
-
-ax[0,0].set_ylabel('Mbits/s', fontsize=6)
-ax[0,0].set_xlabel('sample (t)', fontsize=6, loc='center')
+    
+    ax[i//3, i%3].set_ylabel('Mbits/s', fontsize=6)
+    ax[i//3, i%3].set_xlabel('sample (t)', fontsize=6, loc='center')
+#ax[0,0].set_ylabel('Mbits/s', fontsize=6)
+#ax[0,0].set_xlabel('sample (t)', fontsize=6, loc='center')
 ax[0,1].set_xticks([0,500,1000])
 ax[0,2].set_xticks([0,500,1000])
 
@@ -38,9 +40,12 @@ for i,s in enumerate(sites):
                    usecols=1, delimiter=',')
     ax[i//3, i%3].set_title(s)
     ax[i//3, i%3].plot(y, linewidth=0.5)
+    
+    ax[i//3, i%3].set_ylabel('ms', fontsize=6)
+    ax[i//3, i%3].set_xlabel('sample (t)', fontsize=6, loc='center')
 
-ax[0,0].set_ylabel('ms', fontsize=6)
-ax[0,0].set_xlabel('sample (t)', fontsize=6, loc='center')
+#ax[0,0].set_ylabel('ms', fontsize=6)
+#ax[0,0].set_xlabel('sample (t)', fontsize=6, loc='center')
 
 ax[0, 0].set_yticks(np.arange(15,30,5))
 ax[0, 1].set_yticks(np.arange(0,15,5))

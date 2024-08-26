@@ -206,9 +206,9 @@ for i,c in enumerate(clients):
         ax[i].set_xlim([0,xlim])
         ax[i].tick_params(axis='both', which='major', labelsize=8)   
         
-        if i==0:
-            ax[i].set_ylabel('Num. of changepoints', fontsize=8)
-            ax[i].set_xlabel('Decrement (Mbits/s)', fontsize=8)
+        #if i==0:
+        ax[i].set_ylabel('Num. of changepoints', fontsize=8)
+        ax[i].set_xlabel('Decrement (Mbits/s)', fontsize=8)
             
 handles, labels = ax[0].get_legend_handles_labels()
 _ = ax['legend'].legend(handles, labels, loc="upper center", ncol=3, fontsize=8)

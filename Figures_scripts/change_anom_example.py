@@ -34,4 +34,6 @@ for j,ax in enumerate(axs.ravel()):
     ax.set_title(f'case {cap[j]}')
     ax.plot(ya[j], linewidth=0.5, marker='.')
 axs[1,0].set_xlabel('sample (t)', fontsize=6)
+axs[1,1].set_xlabel('sample (t)', fontsize=6)
+axs[1,2].set_xlabel('sample (t)', fontsize=6)
 

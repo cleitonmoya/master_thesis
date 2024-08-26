@@ -11,19 +11,19 @@ import time
 plt.rcParams.update({'font.size': 8, 'axes.titlesize': 8})
 
 # Load the timeseries
-file = 'dca6326b9c99_gig01_d_throughput.txt'
+file = 'dca6326b9ca8_gig03_d_rttmean.txt'
 X = np.loadtxt(f'../Dataset/ndt/{file}', usecols=1, delimiter=',')
 
-verbose = False
+verbose = True
 
 # Hyperparameters
 w = 20              # window size
 w0 = 20             # window used to estimate the post-change parameters
 alpha = 1           # Beta-binomial hyperp - prior dist. window
 beta = 1            # Beta-binomial hyperp - prior dist. window
-p_thr = 0.6         # threshold probability to an window decide for a changepoint
+p_thr = 0.99         # threshold probability to an window decide for a changepoint
 pa_thr = 0.9        # threshold probabilty to decide for a changepoint
-vote_n_thr = 10     # min. number of votes to decide for a changepoint
+vote_n_thr = 0.5    # min. number of votes to decide for a changepoint
 y0 = 0.5            # logistic prior hyperparameter
 yw = 0.9            # logistic prior hyperparameter
 aggreg = 'mean'
@@ -64,6 +64,8 @@ def loglik(x,loc,scale):
 
 # Auxiliary variables
 N = len(X)
+vote_n_thr = np.floor(w*vote_n_thr)
+#vote_n_thr = 16
 
 # Prior probatilty for a changepoint in a window - Beta-Binomial
 i_ = np.arange(0,w-3)
@@ -155,13 +157,7 @@ for n in range(N):
                 lcp = n-w+1 # last changepoint
                 CP.append(lcp)
 
-endTime = time.time()
-elapsedTime = endTime-startTime
-
-if verbose: print(f'\nTotal: {len(CP)} changepoints')
-if verbose: print(f'Elapsed time: {elapsedTime:.3f}s')
-
-
+#%%
 fig,ax=plt.subplots(figsize=(4.5,4), nrows=4, sharex=True, layout='constrained')
 for ax_ in ax:
     ax_.tick_params(axis='both', labelsize=6)
@@ -176,25 +172,9 @@ if len(CP)>0:
         else:
             ax[0].axvline(cp, color='r', linewidth=0.5)
     ax[0].legend(loc='lower right')
-ax[0].set_ylabel('Mbits/s', fontsize=6)
-ax[0].set_yticks([400,500,600])
-
-x1, x2, y1, y2 = 55, 75, 520, 550 # subregion of the original image
-axins = ax[0].inset_axes([0.15, 0.1, 0.2, 0.4],
-    xlim=(x1, x2), ylim=(y1, y2), yticklabels=[])
-axins.plot(range(55,76), X[55:76], linewidth=0.5, marker='o', markersize=1)
-axins.axvline(66, linewidth=0.5, color='r', linestyle='--')
-
-axins.set_yticks([530, 540])
-axins.set_yticklabels([530, 550])
-axins.yaxis.tick_right()
-axins.grid(linestyle=':')
-
-axins.tick_params(bottom=False) 
-axins.set_xticklabels('') 
-axins.tick_params(labelsize=6) 
-_ = ax[0].indicate_inset_zoom(axins, edgecolor="black")
-
+ax[0].set_ylabel('ms', fontsize=6)
+ax[0].set_yticks([0,100, 200,300])
+ax[0].set_ylim([0,300])
 
 ax[1].set_title('Total number of votes')
 N_votes_tot_idx = np.where(N_votes_tot)[0]
@@ -214,7 +194,7 @@ plt.setp(markerline, markersize = 2)
 plt.setp(baseline, linewidth=0)
 plt.setp(stemline, linewidth=0.5)
 ax[2].axhline(vote_n_thr, color='red', linewidth=0.5, label='threshold')
-ax[2].legend(loc='lower right')
+ax[2].legend(loc='upper right')
 ax[2].set_yticks([0,5,10,15,20])
 ax[2].set_ylim([0,20])
 
@@ -229,5 +209,5 @@ if len(CP)>0:
 ax[3].set_yticks([0,0.25,0.5,0.75,1])
 ax[3].set_ylim(bottom=0)
 ax[3].set_xlabel('sample (t)', fontsize=6)
-ax[3].set_xticks(np.arange(0,275,25))
-ax[3].set_xlim([0,250])
+ax[3].set_xticks(np.arange(0,1200,100))
+ax[3].set_xlim([0,1100])

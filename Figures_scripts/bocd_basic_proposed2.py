@@ -317,4 +317,6 @@ ax[1,1].set_ylim(top=yf2)
 cbar = fig.colorbar(im, ax= ax[1,1], pad=0.01)
 cbar.ax.tick_params(labelsize=6)
 
-#plt.savefig('bocd_basic_proposed2.png', format='png', dpi=600)
+fig.supxlabel('sample (t)', fontsize=6)
+plt.savefig('bocd_basic_proposed2.png', format='png', dpi=600)
+

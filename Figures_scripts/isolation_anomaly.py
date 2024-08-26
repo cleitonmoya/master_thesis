@@ -99,4 +99,6 @@ while num_p != 0 and n < n_lim:
 print(n)
 
 axs[0].set_xlabel(r'$x_1$')
+axs[1].set_xlabel(r'$x_1$')
 axs[0].set_ylabel(r'$x_2$')
+axs[1].set_ylabel(r'$x_2$')
