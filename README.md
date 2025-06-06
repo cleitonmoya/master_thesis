@@ -1,7 +1,8 @@
 # Master thesis repository
 
 ## Description
-This repository contains the code and data used in my master thesis **Change-point detection in time series: a study of online methods applied to computer network measeurements**, completed in the [Systems Engineering and Computer Science Program](https://www.cos.ufrj.br/index.php/en/) of the [COPPE/UFRJ](https://coppe.ufrj.br/en/home-en/). If you find any bug or have some doubt or observation, please let me know.
+- This repository contains the code and data used in my master thesis [**Change-point detection in time series: a study of online methods applied to computer network measeurements**](https://www.cos.ufrj.br/uploadfile/publicacao/3170.pdf), completed in the [Systems Engineering and Computer Science Program](https://www.cos.ufrj.br/index.php/en/) of the [COPPE/UFRJ](https://coppe.ufrj.br/en/home-en/). If you find any bug or have some doubt or observation, please let me know.
+- [Link to the thesis](https://www.cos.ufrj.br/uploadfile/publicacao/3170.pdf)
 
 ## How to cite
 > ALMEIDA, C. M. 2024. *Change-point Detection in Time Series: A Study of Online Methods Using Computer Network Measurements. *M.Sc.* thesis. COPPE/UFRJ, Rio de Janeiro, RJ, Brasil.
